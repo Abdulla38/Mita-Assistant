@@ -10,5 +10,9 @@ Mita is an unofficial voice assistant for PC.
 ## What do I need to do?
 
 1. Write code to recognize voice.
+    - [x] Wake word activation
+    - [ ] Use Vosk to deeply recognize speech
 2. She can speak.
-3. Open for her internet.
+    - [ ] Use stub from game
+    - [ ] Use elevenlabs to generate voice
+3. Open way internet.
