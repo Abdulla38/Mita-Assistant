@@ -9,9 +9,16 @@ license = {text = "GPL-3.0 license"}
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "vosk (>=0.3.45,<0.4.0)",
+    "picovoice (>=3.0.3,<4.0.0)",
+    "pvrecorder (>=1.2.4,<2.0.0)",
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+python-dotenv = "^1.0.1"
+
