@@ -6,3 +6,9 @@
 ![Static Badge](https://img.shields.io/badge/chatGPT-green?style=for-the-badge&logo=openai&logoColor=white)
 
 Mita is an unofficial voice assistant for PC.
+
+## What do I need to do?
+
+1. Write code to recognize voice.
+2. She can speak.
+3. Open for her internet.
