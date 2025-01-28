@@ -422,6 +422,18 @@ tqdm = "*"
 websockets = "*"
 
 [[package]]
+name = "wave"
+version = "0.0.2"
+description = "Whole Architecture Verification"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "Wave-0.0.2.tar.gz", hash = "sha256:5a895bb85e04e38c82dba90d66a5ae8f488b50c58f3fc4df868a5bcdcabb8632"},
+    {file = "Wave-0.0.2.zip", hash = "sha256:5187f49497287d218cc83d4cd1e5299dc31485ab3ed32abbaa9e95d8f73c4095"},
+]
+
+[[package]]
 name = "websockets"
 version = "14.2"
 description = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
@@ -503,4 +515,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "e0363494ef04a53f72df459c09eb4eb9e7b54135fad8e47a57b06cd382d4e02e"
+content-hash = "f23911e3bcf0a24be841531c17399e57e761771789c578e0d533547a3e3f62b0"
