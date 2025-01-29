@@ -14,6 +14,6 @@ the game MiSide.
     - [x] Wake word activation
     - [ ] Use Vosk to deeply recognize speech
 2. She can speak.
-    - [ ] Use stub from game
+    - [x] Use stub from game
     - [ ] Use elevenlabs to generate voice
 3. Open way internet.
