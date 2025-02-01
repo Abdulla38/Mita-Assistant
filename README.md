@@ -12,7 +12,7 @@ the game MiSide.
 
 1. Write code to recognize voice.
     - [x] Wake word activation
-    - [ ] Use Vosk to deeply recognize speech
+    - [x] Use Vosk to deeply recognize speech
 2. She can speak.
     - [x] Use stub from game
     - [ ] Use elevenlabs to generate voice
