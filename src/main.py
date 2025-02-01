@@ -44,12 +44,14 @@ def play_sound():
             output=True,
         )
         # Play samples from the wave file (3)
-        while len(data := wf.readframes(CHUNK)):  # Requires Python 3.8+ for :=
+        data = wf.readframes(CHUNK)
+        while data:  # Requires Python 3.8+ for :=
             stream.write(data)
-            # Close stream (4)
-            stream.close()
-            # Release PortAudio system resources (5)
-            p.terminate()
+            data = wf.readframes(CHUNK)
+        # Close stream (4)
+        stream.close()
+        # Release PortAudio system resources (5)
+        p.terminate()
 
 
 def main():
