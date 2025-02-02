@@ -4,21 +4,12 @@ from pvrecorder import PvRecorder
 import pyaudio
 import wave
 
+from config import ACCESS_KEY
 
-from os import getenv
-from dotenv import load_dotenv, find_dotenv
-
-load_dotenv(find_dotenv())
-
-access_key = getenv("PICOVOICE")
 CHUNK = 1024
 
-if not access_key:
-    raise ValueError("""Access_key is missing! 
-                     Please set the environment variable""")
-
 porcupine = pvporcupine.create(
-    access_key=access_key,
+    access_key=ACCESS_KEY,
     keyword_paths=["./src/wake word activation/Hey-Mita_en_linux_v3_0_0.ppn"],
 )
 
@@ -28,7 +19,7 @@ print("Using device: %s" % recorder.selected_device)
 
 
 def play_sound():
-    with wave.open("./src/sounds/VoiceMor.wav", "rb") as wf:
+    with wave.open("./src/assets/sounds/VoiceMor.wav", "rb") as wf:
         # Instantiate PyAudio and initialize PortAudio system resources (1)
         p = pyaudio.PyAudio()
         # Open stream (2)
