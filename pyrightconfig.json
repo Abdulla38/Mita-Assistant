@@ -1,4 +1,10 @@
 {
   "venv": "mita-assistant-9a0BW4ze-py3.13",
-  "venvPath": "/home/abdulla381/.cache/pypoetry/virtualenvs"
+  "venvPath": "/home/abdulla381/.cache/pypoetry/virtualenvs",
+  "include": ["src"],
+  "executionEnvironments": [
+      {
+          "root": "src"
+      }
+  ]
 }
