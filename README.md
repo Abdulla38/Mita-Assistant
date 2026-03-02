@@ -10,10 +10,12 @@ the game MiSide.
 
 ## What do I need to do?
 
-1. Write code to recognize voice.
-    - [x] Wake word activation
-    - [x] Use Vosk to deeply recognize speech
+1. Write code to recognize voice (in C).
+    - [] Implement input audio and output
+    - [] Wake word activation
+        - [] Learn machine to wake word 
+    - [] Use Vosk to deeply recognize speech
 2. She can speak.
-    - [x] Use stub from game
+    - [] Use stub from game
     - [ ] Use elevenlabs to generate voice
 3. Open way internet.
