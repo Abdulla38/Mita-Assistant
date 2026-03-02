@@ -13,7 +13,7 @@ the game MiSide.
 1. Write code to recognize voice (in C).
     - [ ] Implement input audio and output
     - [ ] Wake word activation
-        - [] Learn machine to wake word 
+        - [ ] Learn machine to wake word 
     - [ ] Use Vosk to deeply recognize speech
 2. She can speak.
     - [ ] Use stub from game
