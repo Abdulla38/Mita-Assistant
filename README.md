@@ -19,3 +19,4 @@ the game MiSide.
     - [ ] Use stub from game
     - [ ] Use elevenlabs to generate voice
 3. Open way internet.
+4. Integrate raylib to display Mita model
