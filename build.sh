@@ -2,4 +2,4 @@
 
 set -xe
 
-gcc src/main.c -o main -lm -lpthread -ldl
+gcc src/main.c -o main -lm -lpthread -ldl -lvosk 
