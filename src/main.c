@@ -8,8 +8,6 @@
 // Callback function
 void data_callback(ma_device *pDevice, void *pOutput, const void *pInput,
                    ma_uint32 frameCount) {
-  // ma_encoder_write_pcm_frames((ma_encoder *)pDevice->pUserData, pInput,
-  // frameCount, NULL);
   VoskRecognizer *rec = (VoskRecognizer *)pDevice->pUserData;
   // 16-bit mono → 2 bytes per frame
   int bytes = frameCount * 2;
@@ -31,8 +29,6 @@ int main(int argc, char *argv[]) {
 
   // Variables for miniaudio
   ma_result result;
-  // ma_encoder encoder;
-  // ma_encoder_config encoder_config;
   ma_device device;
 
   // Variables for vosk
@@ -50,16 +46,6 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "ERROR: could not create recognizer\n");
     return -2;
   }
-
-  // encoder_config = ma_encoder_config_init(ma_encoding_format_wav,
-  // ma_format_s16,                                     1, SAMPLE_RATE); result
-  // = ma_encoder_init_file(output_path, &encoder_config, &encoder);
-
-  // if (result != MA_SUCCESS) {
-  //   fprintf(stderr, "ERROR: could not initialize output file Code: %i.\n",
-  //           result);
-  //   return result;
-  // }
 
   ma_device_config device_config =
       ma_device_config_init(ma_device_type_capture);
@@ -95,6 +81,5 @@ int main(int argc, char *argv[]) {
   printf("%s\n", vosk_recognizer_final_result(recognizer));
   vosk_recognizer_free(recognizer);
   vosk_model_free(model);
-  // ma_encoder_uninit(&encoder);
   return 0;
 }
