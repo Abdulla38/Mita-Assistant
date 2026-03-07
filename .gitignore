@@ -64,3 +64,6 @@ dkms.conf
 *.dwo
 
 *model/
+
+# assets from game MiSide (Assets is 5 GB)
+*mita
