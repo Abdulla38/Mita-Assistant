@@ -25,7 +25,6 @@ void data_callback(ma_device *pDevice, void *pOutput, const void *pInput,
 int main(int argc, char *argv[]) {
   // Paths
   char *model_path = "src/model";
-  char *output_path = "output.wav";
 
   // Variables for miniaudio
   ma_result result;
