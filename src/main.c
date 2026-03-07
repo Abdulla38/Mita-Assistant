@@ -26,13 +26,13 @@ int main(int argc, char *argv[]) {
   // Paths
   char *model_path = "src/model";
 
-  // Variables for miniaudio
-  ma_result result;
-  ma_device device;
-
   // Variables for vosk
   VoskModel *model = vosk_model_new(model_path);
   VoskRecognizer *recognizer = vosk_recognizer_new(model, SAMPLE_RATE);
+
+  // Variables for miniaudio
+  ma_result result;
+  ma_device device;
 
   // Check model isn't loaded
   if (model == NULL) {
