@@ -8,7 +8,7 @@ typedef struct {
   VoskRecognizer *recognizer;
 } SpeechContext;
 
-SpeechContext *speech_init(const char *model_path);
+SpeechContext *speech_init(const char *model_path, int sample_rate);
 
 int speech_process_audio(SpeechContext *ctx, const void *data, int size);
 
