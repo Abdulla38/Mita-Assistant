@@ -67,3 +67,5 @@ dkms.conf
 
 # assets from game MiSide (Assets is 5 GB)
 *mita
+
+build/
