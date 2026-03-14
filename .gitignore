@@ -68,4 +68,10 @@ dkms.conf
 # assets from game MiSide (Assets is 5 GB)
 *mita
 
+# Nob artifacts
 build/
+nob
+nob.old
+nob.exe
+nob.exe.old
+nob.obj
