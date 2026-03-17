@@ -29,41 +29,33 @@ int main(int argc, char *argv[]) {
   // Variables for speech recognition
   SpeechContext *speech_ctx = speech_init(model_path, SAMPLE_RATE);
 
-  // Variables for miniaudio
-  ma_result result;
-  ma_device device;
-
   // Check cotext is loaded
   if (speech_ctx->model == NULL) {
-    fprintf(stderr,
-            "ERROR: could not load model or recognizer not initialized.\n");
+    fprintf(stderr, "ERROR: could not load model or recognizer not initialized.\n");
     return -1;
   }
-  ma_device_config device_config = capture_config_init(
-      ma_format_s16, 1, SAMPLE_RATE, data_callback, speech_ctx);
+  AudioCapture *capture = capture_create(ma_format_s16, 1, SAMPLE_RATE, data_callback, speech_ctx);
 
-  result = capture_init(NULL, &device_config, &device);
-
-  // Check device init
-  if (result != MA_SUCCESS) {
-    fprintf(stderr, "ERROR: could  not open capture device. Code: %i\n",
-            result);
-    return result;
+  // Check device is created
+  if (capture->status != MA_SUCCESS) {
+    int error = capture->status;
+    fprintf(stderr, "ERROR: could not open capture device. Code: %i\n", error);
+    capture_uninit(capture);
+    return error;
   }
-
   printf("Press Space to stop...");
 
   // Check device is started
-  result = capture_start(&device);
-  if (result != MA_SUCCESS) {
-    capture_uninit(&device);
-    fprintf(stderr, "ERROR: could not start capture device. Code: %i\n",
-            result);
-    return result;
+  capture_start(capture);
+  if (capture->status != MA_SUCCESS) {
+    int error = capture->status;
+    fprintf(stderr, "ERROR: could not start capture device. Code: %i\n", error);
+    capture_uninit(capture);
+    return error;
   }
   getchar();
 
-  capture_uninit(&device);
+  capture_uninit(capture);
   speech_free(speech_ctx);
   return 0;
 }
