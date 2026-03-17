@@ -1,32 +1,43 @@
 #include "audio_capture.h"
 #include <miniaudio/miniaudio.h>
+#include <stdlib.h>
 
-ma_device_config capture_config_init(ma_format format, ma_uint32 channles,
-                                     ma_uint32 sample_rate,
-                                     ma_device_data_proc data_callback,
-                                     void *user_data) {
+AudioCapture *capture_create(ma_format format, ma_uint32 channles,
+                             ma_uint32 sample_rate,
+                             ma_device_data_proc data_callback,
+                             void *user_data) {
 
-  ma_device_config device_config =
-      ma_device_config_init(ma_device_type_capture);
+  AudioCapture *ctx = malloc(sizeof(AudioCapture));
+  if (ctx == NULL) {
+    return NULL;
+  }
+  ma_device_config device_config = ma_device_config_init(ma_device_type_capture);
 
-  device_config.capture.format = format;
+  device_config.capture.format =   format;
   device_config.capture.channels = channles;
-  device_config.sampleRate = sample_rate;
-  device_config.dataCallback = data_callback;
-  device_config.pUserData = user_data;
+  device_config.sampleRate =       sample_rate;
+  device_config.dataCallback =     data_callback;
+  device_config.pUserData =        user_data;
 
-  return device_config;
+  ma_result result = ma_device_init(NULL, &device_config, &ctx->device);
+  ctx->status = result;
+  return ctx;
 }
 
-ma_result capture_init(ma_context *p_context, const ma_device_config *p_config,
-                       ma_device *p_device) {
-  ma_result result = ma_device_init(p_context, p_config, p_device);
-  return result;
+// Methods
+int capture_start(AudioCapture *ctx) {
+  ma_result result = ma_device_start(&ctx->device);
+  ctx->status = result;
+  return ctx->status;
 }
 
-ma_result capture_start(ma_device *p_device) {
-  ma_result result = ma_device_start(p_device);
-  return result;
+int capture_stop(AudioCapture *ctx) {
+  ma_result result = ma_device_stop(&ctx->device);
+  ctx->status = result;
+  return ctx->status;
 }
 
-void capture_uninit(ma_device *p_device) { ma_device_uninit(p_device); }
+void capture_uninit(AudioCapture *ctx) {
+  ma_device_uninit(&ctx->device);
+  free(ctx);
+}
